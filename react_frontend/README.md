@@ -27,31 +27,29 @@ Launches the test runner in interactive watch mode.
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## Customization
+## Supabase Setup (IMPORTANT)
 
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
+1) Environment variables (create `.env` in `react_frontend`):
 ```
+REACT_APP_SUPABASE_URL=https://hyosfnrqlapdbheldwof.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIs...
+REACT_APP_SITE_URL=http://localhost:3000
+```
+Restart `npm start` after adding/updating env vars.
 
-### Components
+2) Supabase Dashboard
+- Authentication > URL Configuration:
+  - Site URL: http://localhost:3000
+  - Redirect URLs:
+    - http://localhost:3000/**
+- Authentication > Providers: enable Email/Password
 
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
+3) Database
+Run the SQL found in `assets/supabase.md` to create tables (`profiles`, `todos`) and RLS policies.
 
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
+4) Test the app
+- Use the sign up/sign in form on the homepage.
+- After signing in, click "Load Todos" to verify DB access.
 
 ## Learn More
 
